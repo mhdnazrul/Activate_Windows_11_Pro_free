@@ -1,102 +1,78 @@
-An guide how to activate Windows 11 Pro for free
-## Why?
-Because you will get some more features like an Bitlocker and host your device as an External Desktop which can be accessed through the internet
-## Am i also able to switch from any other edition to Pro?
-The answer is yes! You can switch from almost any edition to Pro completely for free!
-## Note for users with unactivated Pro edition
-People which already have Pro, but not activated, can skip to [this step](https://gist.github.com/Minionguyjpro/d913b3931e844ad8ad9a758a4aca4b63#activating-windows-pro).
-## Getting started
-What you first need to do is open CMD (Command Prompt) as Administrator using this keyboard key:
+# Guide to Activating Windows 11 Pro for Free
 
-Windows-logo key+ R
+## Why Upgrade to Windows 11 Pro?
+Upgrading to Windows 11 Pro unlocks additional features such as:
+- **BitLocker Encryption** for enhanced security
+- **Remote Desktop Hosting** to access your PC from anywhere
 
-And now type in "cmd.exe" in the box
+## Can You Upgrade to Windows 11 Pro for Free?
+Yes! You can switch from almost any edition to Pro at no cost.
 
-It should now look as something like this:
+## Already Using Windows 11 Pro (Unactivated)?
+If you already have Windows 11 Pro but it is unactivated, skip to the [Activation Steps](#activating-windows-11-pro).
 
-![image](https://user-images.githubusercontent.com/66115754/134801377-b9769c34-8a9d-4d4f-ba8e-6c073f1ce4a2.png)
+---
+## Getting Started
+### Opening Command Prompt as Administrator
+1. Press **Windows + R** to open the Run dialog box.
+2. Type **cmd.exe** and press **Ctrl + Shift + Enter**.
+3. Click **Yes** when prompted by User Account Control (UAC).
 
-Now press this keys on your keyboard:
+You should now see an Administrator Command Prompt window.
 
-ctrl+shift+enter
+---
+## Running Essential Commands
+### Step 1: Clearing Previous Keys
+Enter the following commands one by one, pressing **Enter** after each:
+```cmd
+slmgr.vbs /upk  # Uninstall existing product key
+slmgr.vbs /cpky  # Clear product key from registry
+slmgr.vbs /ckms  # Remove any existing KMS configuration
+```
+Click **OK** after each confirmation message.
 
-Now you have something like this:
+### Step 2: Checking Upgrade Compatibility
+To check if your edition supports an upgrade to Pro, run:
+```cmd
+DISM /online /Get-TargetEditions
+```
+If **Professional** is listed, you can proceed with the upgrade.
 
-![image](https://user-images.githubusercontent.com/66115754/134801445-9b90e121-350b-42ea-afec-b499f1fbfae9.png)
+### Step 3: Running the Windows 11 Pro Installer
+Run the following commands to configure necessary services and initiate the upgrade:
+```cmd
+sc config LicenseManager start= auto & net start LicenseManager
+sc config wuauserv start= auto & net start wuauserv
+changepk.exe /productkey VK7JG-NPHTM-C97JM-9MPGT-3V66T
+exit
+```
+Once the process starts, wait for it to reach **100%**. If an error occurs, simply restart your PC.
 
-Now, click on "yes"
+After rebooting, Windows 11 Pro should be installed. However, it will not yet be activated.
 
-Now you have something like this:
+---
+## Activating Windows 11 Pro
+### Step 4: Running Activation Commands
+1. Open **Command Prompt as Administrator** (repeat the previous steps).
+2. Enter these commands one by one:
+```cmd
+slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX  # Install product key
+slmgr /skms kms8.msguides.com  # Set KMS server
+slmgr /ato  # Activate Windows
+```
+3. Wait for the activation process to complete.
 
-![image](https://user-images.githubusercontent.com/66115754/134807479-53ccdaf9-feb0-49a3-9843-5bb4db016128.png)
+Now, your Windows 11 Pro is fully activated! 🎉 You can verify this by checking **Settings > System > About**.
 
-### The commands
-Now, type the following command:
-``slmgr.vbs /upk``
-Now it will give an message, click on OK
-
-And now this command:
-``slmgr.vbs /cpky``
-It will give an message once again, and click on OK again
-
-And now type this command:
-``slmgr.vbs /ckms``
-Once again click on OK when you get an message
-### Edition upgradable check command
-Now we are gonna check of your edition is supported to upgrade to Pro, run the following command to check this:
-``DISM /online /Get-TargetEditions``
-If you see "Professional" in the list, then you can upgrade your Windows edition to Pro for free!
-### Running Windows Pro installer
-Now, copy and paste this complete command:
-
-``sc config LicenseManager start= auto & net start LicenseManager``
-
-``sc config wuauserv start= auto & net start wuauserv``
-
-``changepk.exe /productkey VK7JG-NPHTM-C97JM-9MPGT-3V66T``
-
-``exit``
-
-It will run an installer and you will see an message:"% complete"
-
-Now wait until it's 100% and it's not weird that you will get an error
-
-When you get the error, just click Exit and then reboot your pc.
-
-You will now see an message that he is running updates and is installing features, just wait until its done and check "info" in settings, You will see that Windows 11 Pro is installed! 
-
-But we are not done, You will see that it isn't activated and that you can't change some settings, now we are gonna fix that!
-## Activating Windows Pro
-Now we are gonna run some other commands to activate Windows 11 Pro
-
-Press these keyboard keys once again:
-
-Windows-logo key+R
-
-It looks like this again:
-
-![Run Dialog With cmd.exe Text In It](https://user-images.githubusercontent.com/66115754/134801377-b9769c34-8a9d-4d4f-ba8e-6c073f1ce4a2.png)
-
-Press ctrl+shift+enter
-
-You will get an message, just click on Yes
-
-Now you will get an Command Prompt.
-
-Type the following commands one for one to activate:
-
-``slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX``
-
-``slmgr /skms kms8.msguides.com``
-
-``slmgr /ato``
- 
-Now you have Windows 11 Pro and it activated! You can check settings to see it.
-# Video Tutorial
-There is also an video tutorial to make it easy to follow. Click on the image below to see the video tutorial on YouTube.
-
+---
+## Video Tutorial
+For a step-by-step visual guide, watch this tutorial:
 [![Video Tutorial](https://img.youtube.com/vi/Q132Tr40z_8/0.jpg)](https://www.youtube.com/watch?v=Q132Tr40z_8)
 
-# Last Words
-I hope you enjoy it!
-If you have any further questions, you can email me at "Minionguyjpro@gmail.com" or comment on this guide.
+---
+## Final Notes
+I hope this guide helps! If you have any questions, feel free to reach out.
+
+Author: **Nazrul Islam**  
+Contact: **mhdnazrul511@gmail.com**
+
