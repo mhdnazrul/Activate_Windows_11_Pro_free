@@ -57,6 +57,19 @@ slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
 slmgr /skms kms8.msguides.com
 slmgr /ato
 ```
+## Step 4: Activate Windows 11 Pro and MS Office all products.
+Here are the steps to use the command `irm https://get.activated.win | iex` to activate Windows and Office:
+
+Step 1: Open PowerShell as Administrator. You must have admin rights to run the activation script.  
+Step 2: Copy the command
+```
+irm https://get.activated.win | iex
+```
+Step 3: Paste the command into the PowerShell window and press Enter.  
+Step 4: The script downloads the activation script from the provided URL and verifies its integrity.  
+Step 5: The script will then attempt to activate your Windows operating system and Microsoft Office products using the embedded activation method.  
+Step 6: Restart your computer to complete the activation process.  
+Step 7: Verify activation status by going to System Settings for Windows activation or opening your Office app to check the activation status.  
 
 Once completed, Windows 11 Pro will be activated. You can verify this in **Settings > System > About**.
 
